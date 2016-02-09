@@ -118,13 +118,8 @@ var populateSelect = function(data) {
   };
 };
 
-// Calls the function to get the data when the dropdown menu changes countries
-var changeCountry = function(country) {
-  getData(country);
-};
-
 // Grabs the data for the specific country
-var getData = function(name) {
+var changeCountry = function(name) {
   var male = [];
   var female = [];
 
