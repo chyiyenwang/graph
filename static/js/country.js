@@ -1,3 +1,5 @@
+var countryData;
+
 d3.csv("countryData.csv", function(d) {
   if (d.metric == 'obese' && d.age_group_id == 36) {
     return {
@@ -8,6 +10,7 @@ d3.csv("countryData.csv", function(d) {
     };
   };
 }, function(data) {
+  countryData = data;
   // Puts distinct country names into an array
   var countries = {};
 
@@ -21,23 +24,6 @@ d3.csv("countryData.csv", function(d) {
 
   // Populate the Select dropdown
   populateSelect(Object.keys(countries));
-
-  // var male = [];
-  // var female = [];
-
-  // data.forEach(function(country) {
-  //   if (country.location_name == 'China' && country.sex == 'male') {
-  //     male.push(country);
-  //   }
-  // })
-  // data.forEach(function(country) {
-  //   if (country.location_name == 'China' && country.sex == 'female') {
-  //     female.push(country);
-  //   }
-  // })
-
-  // console.log(male);
-  // console.log(female);
 });
 
 var populateSelect = function(data) {
@@ -53,7 +39,25 @@ var populateSelect = function(data) {
   };
 };
 
-function changeCountry(country) {
-  alert(document.getElementsByTagName('option').value);
+var changeCountry = function(country) {
+  getData(country);
 };
 
+var getData = function(name) {
+  var male = [];
+  var female = [];
+
+  countryData.forEach(function(country) {
+    if (country.location_name == name && country.sex == 'male') {
+      male.push(country);
+    };
+  });
+  countryData.forEach(function(country) {
+    if (country.location_name == name && country.sex == 'female') {
+      female.push(country);
+    };
+  });
+
+  console.log(male);
+  console.log(female);
+}
