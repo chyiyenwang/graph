@@ -101,7 +101,7 @@ d3.csv("countryData.csv", function(d) {
     countries[countryList[i]] = null;
   };
 
-  populateSelect(Object.keys(countries));
+  populateSelect(Object.keys(countries).sort());
 });
 
 // Populates the dropdown menu with the distinct countries listed in the CSV
