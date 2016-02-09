@@ -6,23 +6,54 @@ d3.csv("countryData.csv", function(d) {
       year: +d.year,
       mean: +d.mean,
     };
-  }
+  };
 }, function(data) {
-  var male = [];
-  var female = [];
+  // Puts distinct country names into an array
+  var countries = {};
 
-  data.forEach(function(country) {
-    if (country.location_name == 'China' && country.sex == 'male') {
-      male.push(country);
-    }
-  })
-  data.forEach(function(country) {
-    if (country.location_name == 'China' && country.sex == 'female') {
-      female.push(country);
-    }
+  var countryList = data.map(function(country) {
+    return country.location_name;
   })
 
-  console.log(male);
-  console.log(female);
+  for (var i = 0; i < countryList.length; i++) {
+    countries[countryList[i]] = null;
+  };
+
+  // Populate the Select dropdown
+  populateSelect(Object.keys(countries));
+
+  // var male = [];
+  // var female = [];
+
+  // data.forEach(function(country) {
+  //   if (country.location_name == 'China' && country.sex == 'male') {
+  //     male.push(country);
+  //   }
+  // })
+  // data.forEach(function(country) {
+  //   if (country.location_name == 'China' && country.sex == 'female') {
+  //     female.push(country);
+  //   }
+  // })
+
+  // console.log(male);
+  // console.log(female);
 });
+
+var populateSelect = function(data) {
+  var select = document.getElementById('selectCountry');
+
+  for(var i = 0; i < data.length; i++) {
+    var opt = data[i];
+    var element = document.createElement('option');
+
+    element.textContent = opt;
+    element.value = opt;
+    select.appendChild(element);
+  };
+};
+
+function changeCountry(country) {
+  alert(document.getElementsByTagName('option').value);
+};
 
