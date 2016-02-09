@@ -1,4 +1,5 @@
-var countryData;
+$(document).ready(function() {
+  var countryData;
 
 // // Creates and defines the dimensions of the graph
 var vis = d3.select('#visualization');
@@ -157,3 +158,4 @@ var getData = function(name) {
     .attr('stroke-width', 2)
     .attr('fill', 'none');
 };
+});
