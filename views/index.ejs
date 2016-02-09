@@ -1,10 +1,24 @@
 <div class="row">
-  <select id="selectCountry" onchange="changeCountry(this.value)">
-    <option>Select...</option>
-  </select>
-  
-  <p>
-    <svg id="visualization" width="1000" height="500"></svg>
-  </p>
+  <div class="large-6 large-centered columns">
+    <h3>
+      Age Group: 2 to 19 yrs age-standardized
+      <small>Obesity rates - percentage</small>
+    </h3>
+    <select id="selectCountry" onchange="changeCountry(this.value)">
+      <option>Select...</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <svg id="visualization" class="large-12 large-centered columns" width="1000" height="510"></svg>
+  </div>
+
+  <div class="row">
+    <div id="m-legend" class="medium-6 large-6 medium-centered large-centered columns text-center" style="color:blue">Male</div>
+  </div>
+  <div class="row">
+    <div id="f-legend" class="medium-6 large-6 medium-centered large-centered columns text-center" style="color:green">Female</div>
+  </div>
 </div>
+
 <script type="text/javascript" src="js/country.js"></script>
